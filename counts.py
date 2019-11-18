@@ -40,7 +40,11 @@ def process(i):
     if i < minval:
         minval = i
 
-    # keep track of mode values to access in constant time below. bc of how this is is written mode will return the first mode it comes across in the event that you have multiple modes. here you have a trade off- to access mode in constant time the code would not parallelize well. would have to use threading or multiprocessing lib.
+    # keep track of mode values to access in constant time below.
+    # bc of how this is is written mode will return the first mode it comes
+    # across in the event that you have multiple modes. here you have a
+    # trade off- to access mode in constant time the code would not
+    # parallelize well. would have to use threading or multiprocessing lib.
     if len(counts) == 0:
         modek = i
         modev = 1
@@ -84,7 +88,9 @@ def mode():
     what's the execution time of mode? can mode() run in constant time?
     """
 
-    # process(i) keeps track of mode as you pass values, otherwise this would be O(n). mode is accessed in constant time bc dictionary lookups are generally constant.
+    # process(i) keeps track of mode as you pass values,
+    # otherwise this would be O(n). mode is accessed in constant
+    # time bc dictionary lookups are generally constant.
     if len(counts) > 0:
         return (counts[modek])
 
@@ -99,7 +105,9 @@ def median():
 
     # funcs below come from source: https://rcoh.me/posts/linear-time-median-finding/
 
-    # big o execution for this is O(n). the median of median methods does not require you to sort the list- which would have put you at O(nlogn).
+    # big o execution for this is O(n). the median of median methods
+    # does not require you to sort the list- which would have put
+    # you at O(nlogn).
     if len(pool) > 0:
         return (quickselect_median(pool))
 
